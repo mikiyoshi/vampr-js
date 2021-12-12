@@ -28,7 +28,6 @@ describe('Vampire', function () {
       expect(rootVampire.isMoreSeniorThan(offspring2)).to.equal(true);
       expect(rootVampire.isMoreSeniorThan(offspring3)).to.equal(true);
       expect(rootVampire.isMoreSeniorThan(offspring4)).to.equal(true);
-      // console.log(rootVampire.isMoreSeniorThan(offspring1));
     });
 
     it('should return false when called with root vampire', () => {
@@ -36,17 +35,14 @@ describe('Vampire', function () {
       expect(offspring2.isMoreSeniorThan(rootVampire)).to.equal(false);
       expect(offspring3.isMoreSeniorThan(rootVampire)).to.equal(false);
       expect(offspring4.isMoreSeniorThan(rootVampire)).to.equal(false);
-      // console.log(offspring4.isMoreSeniorThan(rootVampire));
     });
 
     it('should return true when a vampire is more senior', () => {
       expect(offspring3.isMoreSeniorThan(offspring4)).to.equal(true);
-      // console.log(offspring3.isMoreSeniorThan(offspring4));
     });
 
     it('should return false when a vampire is not more senior', () => {
       expect(offspring4.isMoreSeniorThan(offspring3)).to.equal(false);
-      // console.log(offspring4.isMoreSeniorThan(offspring3));
     });
   });
 });

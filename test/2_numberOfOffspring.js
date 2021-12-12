@@ -19,7 +19,6 @@ describe('Vampire', function () {
       rootVampire.addOffspring(new Vampire());
       rootVampire.addOffspring(new Vampire());
       expect(rootVampire.numberOfOffspring).to.equal(5);
-      // console.log(rootVampire.numberOfOffspring);
     });
   });
 });

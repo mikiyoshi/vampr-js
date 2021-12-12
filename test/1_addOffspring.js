@@ -22,12 +22,10 @@ describe('Vampire', function () {
     it('should get added to offspring', () => {
       expect(rootVampire.offspring[0]).to.equal(offspring1);
       expect(rootVampire.offspring[1]).to.equal(offspring2);
-      // console.log(rootVampire.offspring[0]);
     });
     it('should add parent as creator', () => {
       expect(offspring1.creator).to.equal(rootVampire);
       expect(offspring2.creator).to.equal(rootVampire);
-      // console.log(offspring1.creator);
     });
   });
 });
