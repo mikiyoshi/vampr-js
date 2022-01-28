@@ -52,12 +52,67 @@ class Vampire {
   // * when comparing Ansel and Sarah, Ansel is the closest common anscestor.
   // * when comparing Ansel and Andrew, Ansel is the closest common anscestor.
   closestCommonAncestor(vampire) {
-    // console.log('Vampire at Closest: ', vampire.creator);
-    // console.log('Closest of This: ', this.creator);
-    // console.log('Vampire at Closest: ', vampire.numberOfVampiresFromOriginal);
-    // console.log('Closest of This: ', this.numberOfVampiresFromOriginal);
-    // console.log('Vampire at Closest: ', vampire.numberOfVampiresFromOriginal);
-    // console.log('Closest of This: ', this.numberOfVampiresFromOriginal);
+    let thisAncestor = this.creator;
+    let thisAncestorArrs = [this];
+    while (thisAncestor) {
+      thisAncestorArrs.push(thisAncestor);
+      thisAncestor = thisAncestor.creator;
+    }
+
+    let otherAncestor = vampire.creator;
+    let otherAncestorArrs = [vampire];
+    while (otherAncestor) {
+      otherAncestorArrs.push(otherAncestor);
+      otherAncestor = otherAncestor.creator;
+    }
+
+    for (let thisAncestorArr of thisAncestorArrs) {
+      for (let otherAncestorArr of otherAncestorArrs) {
+        if (thisAncestorArr.name === otherAncestorArr.name) {
+          return thisAncestorArr;
+        }
+      }
+    }
+  }
+
+  vampireName(name) {
+    if (this.name === name) {
+      return this;
+    }
+
+    for (let vampire of this.offspring) {
+      if (vampire.vampireName(name)) {
+        return vampire.vampireName(name);
+      }
+    }
+
+    return null;
+  }
+
+  get totalDescendents() {
+    let descendents = 0;
+
+    for (let descendent of this.offspring) {
+      descendents++;
+      if (descendent.offspring.length > 0) {
+        descendents += descendent.totalDescendents;
+      }
+    }
+    return descendents;
+  }
+
+  get allMillennialVampires() {
+    let millenials = [];
+
+    for (let descendent of this.offspring) {
+      if (descendent.yearConverted > 1980) {
+        millenials.push(descendent);
+      }
+      if (descendent.offspring.length > 0) {
+        millenials.push(...descendent.allMillennialVampires);
+      }
+    }
+    return millenials;
   }
 }
 
