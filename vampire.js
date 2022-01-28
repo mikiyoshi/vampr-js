@@ -44,17 +44,6 @@ class Vampire {
     }
   }
 
-  /** Tree traversal methods **/
-
-  // Returns the vampire object with that name, or null if no vampire exists with that name
-  vampireWithName(name) {}
-
-  // Returns the total number of vampires that exist
-  get totalDescendents() {}
-
-  // Returns an array of all the vampires that were converted after 1980
-  get allMillennialVampires() {}
-
   /** Stretch **/
 
   // Returns the closest common ancestor of two vampires.
@@ -86,6 +75,9 @@ class Vampire {
     }
   }
 
+  /** Tree traversal methods **/
+
+  // Returns the vampire object with that name, or null if no vampire exists with that name
   vampireWithName(name) {
     if (this.name === name) {
       return this;
@@ -100,6 +92,7 @@ class Vampire {
     return null;
   }
 
+  // Returns the total number of vampires that exist
   get totalDescendents() {
     let descendents = 0;
 
@@ -112,6 +105,7 @@ class Vampire {
     return descendents;
   }
 
+  // Returns an array of all the vampires that were converted after 1980
   get allMillennialVampires() {
     let millenials = [];
 
